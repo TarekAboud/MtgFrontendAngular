@@ -1,0 +1,11 @@
+:host {
+    display:block;
+    background-color: #666555;
+}
+
+div.list-container {
+    border: 15px solid black;
+    width: 50%; 
+    background-color: white; 
+    margin: auto;
+}

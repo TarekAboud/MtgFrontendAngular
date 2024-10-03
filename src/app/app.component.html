@@ -1,18 +1,8 @@
-<div style="width: 100%;" class="list-container">
-  <h2>Magic The Gathering <b>Sets</b></h2>
-  <dx-list 
-    #list
-    [dataSource]="sets"
-    [height]="400"
-    [searchEnabled]="true"
-    searchExpr="name"
-    searchMode="contains"
-    (onItemClick)="onSetClick($event)"
-    >
-    <div *dxTemplate="let data of 'item'">
-      <div>
-        <p style="margin:0px"><b>{{ data.name }}</b> - {{ data.releaseDate }}</p>
-      </div>
-    </div>
-  </dx-list>
-</div>
+<nav>
+    <ul>
+      <li><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li>
+      <li><a routerLink="/set-search" routerLinkActive="active" ariaCurrentWhenActive="page">Set search</a></li>
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>

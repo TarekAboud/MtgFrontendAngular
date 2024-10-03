@@ -1,0 +1,20 @@
+
+<br><br>
+<div class="list-container">
+  <h2 style="text-align: center;">Magic The Gathering <b>Sets</b></h2>
+  <dx-list 
+    #list
+    [dataSource]="sets"
+    [searchEnabled]="true"
+    height = "300"
+    searchExpr="name"
+    searchMode="contains"
+    >
+    <div *dxTemplate="let data of 'item'">
+      <a [routerLink]="['/card-show', data.code]">
+        <p style="margin:0px"><b>{{ data.name }}</b>: {{ data.releaseDate }}</p>
+      </a>
+    </div>
+  </dx-list>
+</div>
+

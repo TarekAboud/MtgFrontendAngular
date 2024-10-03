@@ -1,55 +1,29 @@
 import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 import { HttpClient, HttpClientModule } from "@angular/common/http"
 import { DxSelectBoxModule, DxListModule, 
   DxTemplateModule } from 'devextreme-angular';
 import {  } from 'devextreme-angular'
+import { Observable } from 'rxjs';
+import { map } from 'rxjs';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+import { tap, catchError } from 'rxjs';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule, RouterOutlet, HttpClientModule, 
-    DxSelectBoxModule, DxListModule, DxTemplateModule
+    CommonModule, RouterOutlet, RouterLink, RouterLinkActive, HttpClientModule, 
+    DxSelectBoxModule, DxListModule, DxTemplateModule, RouterModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'MagicTheGatheringLotrFrontend';
-  readonly ApiUrl = "http://localhost:2766/api/cards/" 
-  sets: any=[];
-  setCards: any=[];
 
-  constructor(private _http: HttpClient) {
-  }
-
-
-  refreshSets() {
-    this._http.get(this.ApiUrl + 'GetAllSets')
-    .subscribe( {
-      next: (d) => {this.sets = d},
-      error: (e) => console.error(e) 
-    })
-  }
-
-  onSetClick(e: any) {
-    console.log(e);
-    this.getAllSetCards(e.itemData.code);
-  }
-
-  getAllSetCards(setId: Text) {
-    this._http.get(this.ApiUrl + 'GetSetCards?setId=' + setId)
-    .subscribe( {
-      next: (d) => {this.setCards = d},
-      error: (e) => console.error(e) 
-    })
-  }
-
-  ngOnInit() {
-    this.refreshSets();
-  }
 
 }
+
+
