@@ -1,11 +1,14 @@
-<div class="card-gallery">
-    <h2 style="text-align: center;">Magic The Gathering Cards</h2>
-    
-    <div class="card-container">
-      <div *ngFor="let card of cards">
-        <img [src]="card.imageUrl" [alt]="card.name" class="card-image">
-        <p class="card-name">{{ card.name }}</p>
-      </div>
+<h2 style="text-align: center;">Magic The Gathering Cards</h2>
+
+<p-checkbox (onChange)="filterArt()" [binary]="true" [(ngModel)]="filteredArt" label="Filter art">
+</p-checkbox>
+
+
+<div class="card-container">
+  <div *ngFor="let card of setCards">
+    <div class="card">
+      <img [src]="card.imageUris.normal" [alt]="card.name" class="card-image" style="width: 100%">
+      <p class="card-name">{{ card.name }}</p>
     </div>
+  </div>
 </div>
-  
